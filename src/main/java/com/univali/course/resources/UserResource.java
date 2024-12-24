@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/users")
-public class UserResources {
+public class UserResource {
 
     @Autowired
     private UserService service;
@@ -23,9 +23,9 @@ public class UserResources {
         List<User> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
-    @GetMapping(value = "/{ìd}")
-    public ResponseEntity<User> findById(@PathVariable Long ìd){
-        User obj = service.findById(ìd);
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<User> findById(@PathVariable Long id){
+        User obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
