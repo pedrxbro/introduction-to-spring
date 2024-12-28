@@ -10,6 +10,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -34,6 +35,11 @@ public class UserResource {
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
+    }
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete (@PathVariable Long id){
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
